@@ -2,7 +2,7 @@ import {DefaultLayout} from "../components/DefaultLayout";
 import {Button, Card, Col, Row} from "react-bootstrap";
 import React, {useRef, useState} from "react";
 import loading from '../assets/loading-37.gif';
-import {isBrowser, isMobile} from "react-device-detect";
+import {isBrowser, isDesktop, isMobile, isTablet} from "react-device-detect";
 
 const hanzi = [
   '爸爸', '妈妈', '中文', '老师',
@@ -26,13 +26,14 @@ export const Hanzi = () => {
   const [idx, setIdx] = useState<number>(-1);
   const [status, setStatus] = useState<boolean>(false);
   const [isStarted, setStarted] = useState<boolean>(false);
+
   return <DefaultLayout>
     <div className={' vh-100 d-flex justify-content-center align-items-center'}>
       <Card>
-        <Card.Body>
+        <Card.Body style={{minWidth: 260, minHeight: 260}}>
           <video autoPlay={false} ref={videoRef}
                  style={{position: "relative", visibility: isStarted ? 'visible' : 'hidden', zIndex: 0}}
-                 playsInline={false}
+                 playsInline={true}
                  onEnded={() => {
                    if (isReversed) {
                      setIdx(idx <= 0 ? 0 : idx - 1)
@@ -73,7 +74,7 @@ export const Hanzi = () => {
               <Button className={'text-center'} onClick={() => {
                 setReversed(true)
                 setStatus(false)
-                setStarted(isBrowser ? true : false)
+                setStarted(isDesktop || isTablet ? true : false)
                 return videoRef.current?.play();
               }}>Previous</Button>
             </Col>
@@ -81,7 +82,7 @@ export const Hanzi = () => {
               <Button className={'text-center'} onClick={() => {
                 setReversed(false)
                 setStatus(false)
-                setStarted(isBrowser ? true : false)
+                setStarted(isDesktop || isTablet ? true : false)
                 return videoRef.current?.play();
               }}>Next</Button>
             </Col>
