@@ -12,6 +12,7 @@ export const Header = (props: IProps) => {
             <NavDropdown align={'end'} title="发音练习" className={'dropdown-menu-end'}>
                 <NavDropdown.Item href={'/pinyin'}>拼音练习</NavDropdown.Item>
                 <NavDropdown.Item href={'/hanzi'}>汉字练习</NavDropdown.Item>
+                <NavDropdown.Item href={'/hanzi-2'}>汉字练习-2</NavDropdown.Item>
             </NavDropdown>
 
             <NavDropdown align={'end'} title="字帖" className={'dropdown-menu-end'}>

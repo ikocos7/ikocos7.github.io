@@ -7,23 +7,24 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
 import {Error} from "./components/Error";
 import {Hanzi} from "./pages/Hanzi";
+import {Hanzi2} from "./pages/Hanzi2";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 
 
-
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Pinyin/>}></Route>
-                <Route path='/pinyin' element={<Pinyin/>}></Route>
-                <Route path='/hanzi' element={<Hanzi />}></Route>
-                <Route path='*' element={<Error/>}></Route>
-            </Routes>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Pinyin />}></Route>
+          <Route path='/pinyin' element={<Pinyin />}></Route>
+          <Route path='/hanzi' element={<Hanzi />}></Route>
+          <Route path='/hanzi-2' element={<Hanzi2 />}></Route>
+          <Route path='*' element={<Error />}></Route>
+        </Routes>
+      </BrowserRouter>
     </React.StrictMode>
 );
 
